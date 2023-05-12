@@ -88,6 +88,7 @@ application:
 * NextJS 13.3.0
 * Recaptcha 3
 * Primereact
+* React Query
 * NextAuthJS 4.22.1
  
 ## Getting Started
