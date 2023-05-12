@@ -8,6 +8,20 @@ This project demonstrates the implementation of security using NextJS 13.3.0 and
 * Customized access denied handling
 * Logout mechanism
 
+
+## Configuration Files
+Create .env files in social-login-portal
+
+```bash
+NEXTAUTH_SECRET=yoursecretkey
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=yourrecaptchasitekey
+NEXT_PUBLIC_RECAPTCHA_SECRET_KEY=yourrecaptchasecretkey
+NEXT_PUBLIC_GOOGLE_ID=yourgoogleid
+NEXT_PUBLIC_GOOGLE_SECRET=GOCSPX-yourgooglesecret
+NEXT_PUBLIC_FACEBOOK_ID=yourfacebookid
+NEXT_PUBLIC_FACEBOOK_SECRET=yourfacebooksecret
+```
+
 ## Technologies
 * Spring Boot 3.0
 * Spring Security
