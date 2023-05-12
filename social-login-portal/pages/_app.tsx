@@ -15,8 +15,6 @@ import {QueryClient, QueryClientProvider} from "react-query";
 
 export default function App({Component, pageProps}: AppProps) {
     const reCaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? '';
-    const {executeRecaptcha} = useGoogleReCaptcha();
-
     const reactQueryClient = new QueryClient({
         defaultOptions: {
             queries: {
