@@ -1,0 +1,37 @@
+services:
+
+  db:
+    container_name: db
+    image: postgres
+    volumes:
+      - ./postgres_socialloginexample_data:/var/lib/postgres
+    ports:
+      - "7777:5432"
+    environment:
+      POSTGRES_DB: social-login
+      POSTGRES_USER: theworldwar3
+      POSTGRES_PASSWORD: password
+
+  keycloak-socialloginexample:
+    container_name: socialloginexample-keycloak
+    image: quay.io/keycloak/keycloak:latest
+    command: [ "start-dev", "--import-realm" ]
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_PORT: 7777
+      DB_DATABASE: keycloak
+      DB_USER: theworldwar3
+      DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8888:8080"
+    depends_on:
+      - db
+
+  maildev:
+    image: maildev/maildev
+    ports:
+      - "1080:1080"
+      - "1025:1025"

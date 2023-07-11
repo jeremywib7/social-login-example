@@ -1,6 +1,7 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import FacebookProvider from "next-auth/providers/facebook";
+import KeycloakProvider from "next-auth/providers/keycloak";
 import {axiosAuth} from "../../../lib/axios";
 import NextAuth from "next-auth";
 
@@ -13,6 +14,11 @@ export default NextAuth({
         FacebookProvider({
             clientId: process.env.NEXT_PUBLIC_FACEBOOK_ID,
             clientSecret: process.env.NEXT_PUBLIC_FACEBOOK_SECRET,
+        }),
+        KeycloakProvider({
+            clientId: process.env.NEXT_PUBLIC_KEYCLOAK_SECRET,
+            clientSecret: process.env.NEXT_PUBLIC_KEYCLOAK_SECRET,
+            issuer: process.env.KEYCLOAK_ISSUER,
         }),
         CredentialsProvider({
             credentials: {},

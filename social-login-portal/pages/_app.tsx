@@ -10,7 +10,7 @@ import React from "react";
 import {SessionProvider} from "next-auth/react";
 import "../global.css";
 import {ToastProvider} from "../components/ToastContext";
-import {GoogleReCaptchaProvider, useGoogleReCaptcha} from "react-google-recaptcha-v3";
+import {GoogleReCaptchaProvider} from "react-google-recaptcha-v3";
 import {QueryClient, QueryClientProvider} from "react-query";
 
 export default function App({Component, pageProps}: AppProps) {

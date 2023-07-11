@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {InputText} from "primereact/inputtext";
 import {Button} from "primereact/button";
-import {Divider} from "primereact/divider";
+import {Divider} from "primereact/divider"; 
 import {validateFormData} from "../utils/validation";
 import {useForm} from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -26,9 +26,11 @@ const Auth = () => {
     const [loading, setLoading] = useState(false);
 
     const onSignInWithCredentials = async (): Promise<any> => {
+        setLoading(true);
         const validationResult = await validateFormData(getValues(), loginSchema, trigger);
         if (Object.keys(validationResult.errors).length === 0) {
             if (!executeRecaptcha) {
+                setLoading(false);
                 return;
             }
             const token = await executeRecaptcha();
@@ -39,6 +41,7 @@ const Auth = () => {
                 redirect: false
             });
             if (result && result.error) {
+                setLoading(false);
                 return showMessage(result.error, SeverityEnum.ERROR);
             }
             return await router.push('/');

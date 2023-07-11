@@ -1,5 +1,5 @@
 import useAxiosAuth from "../../lib/hooks/useAxiosAuth";
-import {useMutation, UseMutationResult} from "react-query";
+import {useMutation, UseMutationResult, useQuery, UseQueryResult} from "react-query";
 import {ErrorMessage, HttpResponse} from "../../global-interface";
 
 export interface LoginRequest {
@@ -13,6 +13,14 @@ export interface RegisterRequest {
     email: string;
     password: string;
 }
+
+export const useTest = (data: RegisterRequest): UseQueryResult<HttpResponse, ErrorMessage> => {
+    const axiosAuth = useAxiosAuth();
+    return useQuery<HttpResponse, ErrorMessage>(['register'], async () => {
+        return await axiosAuth.post(`/api/v1/auth/register`, data);
+    });
+};
+
 
 export const useRegister = (): UseMutationResult<HttpResponse, ErrorMessage, RegisterRequest> => {
     const axiosAuth = useAxiosAuth();
